@@ -1,0 +1,27 @@
+﻿
+@model TelerikUI.Controllers.TelerikUIPagesController
+@using TelerikUI.Models
+@{
+    ViewData["Title"] = "ToolTip";
+}
+
+<h1>ToolTip</h1>
+
+<div id="orders">
+    <span title="Test Tool Tip">Hover Here</span>
+</div>
+
+@(Html.Kendo().Tooltip()
+        .For("#orders")
+        .Filter("span")
+        .ContentTemplateId("template")
+        .Position(TooltipPosition.Top)
+        .Width(400)
+        .Height(200)
+)
+
+<script id="template" type="text/x-kendo-template">
+    <div class="template-wrapper">
+        <p>#=target.data('title')#</p>
+    </div>
+</script>
