@@ -5,3 +5,85 @@
 
 <h1>TreeView</h1>
 
+<div class="demo-section k-content">
+    @(Html.Kendo().TreeView()
+        .Name("treeview")
+        .Items(treeview =>
+        {
+            treeview.Add().Text("TelerikUI")
+                //.SpriteCssClasses("folder")
+                .Expanded(true)
+                .Items(root =>
+                {
+                    root.Add().Text("UI Type")
+                        .Expanded(true)
+                        //.SpriteCssClasses("folder")
+                        .Items(ui =>
+                        {
+                            ui.Add().Text("BarGraphPieChart")
+                                .Action("BarGraphPieChart", "TelerikUIPages");
+
+                            ui.Add().Text("Calendar")
+                                .Action("Calendar", "TelerikUIPages");
+
+                            ui.Add().Text("DragDrop")
+                                .Action("DragDrop", "TelerikUIPages");
+
+                            ui.Add().Text("Grid")
+                                .Action("Grid", "TelerikUIPages");
+
+                            ui.Add().Text("ToolTip")
+                                .Action("ToolTip", "TelerikUIPages");
+
+                            ui.Add().Text("TreeView")
+                                .Action("TreeView", "TelerikUIPages");
+                        });
+
+                    //root.Add().Text("resources")
+                    //    .Expanded(true)
+                    //    .SpriteCssClasses("folder")
+                    //    .Items(resources =>
+                    //    {
+                    //        resources.Add().Text("pdf")
+                    //            .Expanded(true)
+                    //            .SpriteCssClasses("folder")
+                    //            .Items(pdf =>
+                    //            {
+                    //                pdf.Add().Text("brochure.pdf")
+                    //                    .SpriteCssClasses("pdf");
+
+                    //                pdf.Add().Text("prices.pdf")
+                    //                    .SpriteCssClasses("pdf");
+                    //            });
+
+                    //        resources.Add().Text("zip")
+                    //            .SpriteCssClasses("folder");
+                    //    });
+
+                    //root.Add().Text("about.html")
+                    //    .SpriteCssClasses("html");
+
+                    //root.Add().Text("contacts.html")
+                    //    .SpriteCssClasses("html");
+
+                    //root.Add().Text("index.html")
+                    //    .SpriteCssClasses("html");
+
+                    //root.Add().Text("portfolio.html")
+                    //    .SpriteCssClasses("html");
+                });
+        })
+    )
+</div>
+
+<style>
+    #treeview .k-sprite {
+        background-image: url("@Url.Content("~/shared/web/treeview/coloricons-sprite.png")");
+    }
+
+    .rootfolder { background-position: 0 0; }
+    .folder { background-position: 0 -16px; }
+    .pdf { background-position: 0 -32px; }
+    .html { background-position: 0 -48px; }
+    .image { background-position: 0 -64px; }
+</style>

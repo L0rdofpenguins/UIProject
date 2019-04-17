@@ -5,3 +5,71 @@
 
 <h1>BarGraphPieChart</h1>
 
+<div class="demo-section k-content wide">
+    @(Html.Kendo().Chart()
+        .Name("piechart")
+                .Title(title => title
+                    .Text("Components of Jeff Li")
+                    .Position(ChartTitlePosition.Top))
+        .Legend(legend => legend
+            .Visible(false)
+        )
+        .ChartArea(chart => chart
+            .Background("transparent")
+            )
+        //.HtmlAttributes(new { style = "background: center no-repeat url(" + @Url.Content("~/shared/world-map.png") })
+        .Series(series =>
+        {
+            series.Pie(new dynamic[] {
+                new {category="Autism",value=53.8,color="#9de219"},
+                new {category="EDM",value=16.1,color="#90cc38"},
+                new {category="Strawberry",value=11.3,color="#068c35"},
+                new {category="Game of Thrones",value=9.6,color="#006634"},
+                new {category="Smoked Salmon",value=5.2,color="#004d38"},
+                new {category="Hearthstone",value=3.6,color="#033939"}
+            })
+            .Labels(labels => labels
+                .Template("#= category #: \n #= value#%")
+                .Background("transparent")
+                .Visible(true)
+            )
+            .StartAngle(150);
+        })
+        .Tooltip(tooltip => tooltip
+            .Visible(true)
+            .Format("{0}%")
+        )
+    )
+</div>
+
+<div class="demo-section k-content wide">
+    @(Html.Kendo().Chart()
+            .Name("bargraph")
+            .Title("Components of Jeff Li & Victor Feng")
+            .Legend(legend => legend
+                .Visible(false)
+            )
+            .ChartArea(chartArea => chartArea
+                .Background("transparent")
+            )
+            .Series(series =>
+            {
+                series.Bar(new double[] { 56000, 34000, 50000, 91000, 75000}).Name("Jeff");
+                series.Bar(new double[] { 52000, 63000, 50000, 48000, 80000}).Name("Victor");
+            })
+            .CategoryAxis(axis => axis
+                .Categories("Autism", "Hearthstone", "EDM", "Strawberry", "Capers")
+                .MajorGridLines(lines => lines.Visible(false))
+            )
+            .ValueAxis(axis => axis
+                .Numeric()
+                .Max(140000)
+                .Line(line => line.Visible(false))
+                .MajorGridLines(lines => lines.Visible(true))
+            )
+            .Tooltip(tooltip => tooltip
+                .Visible(true)
+                .Template("#= series.name #: #= value #")
+            )
+    )
+</div>

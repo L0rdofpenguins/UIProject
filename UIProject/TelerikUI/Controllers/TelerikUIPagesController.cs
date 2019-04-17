@@ -61,6 +61,11 @@ namespace TelerikUI.Controllers
             return View();
         }
 
+        public IActionResult TreeView()
+        {
+            return View();
+        }
+
         public IActionResult ReadOrders([DataSourceRequest] DataSourceRequest request)
         {
             return Json(GetOrders().ToDataSourceResult(request));
